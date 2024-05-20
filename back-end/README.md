@@ -14,6 +14,20 @@
 
 #
 
+## Database Setup
+
+- Create a `.env` file in the **HappyTals** folder.
+- Paste and Provide the following without qoutation
+- ```shell
+   NAME=<DB Name>
+   USER=<DB User>
+   PASSWORD=<DB Password>
+   HOST=localhost
+   PORT=5432
+  ```
+
+#
+
 ## API Documentation
 
 -
