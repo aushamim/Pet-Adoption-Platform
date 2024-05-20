@@ -1,20 +1,29 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
 
-from Shelters.models import Shelter
+from User_Management.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "first_name", "last_name", "email", "date_joined"]
+        fields = [
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "bio",
+            "phone_no",
+            "address",
+            "date_joined",
+        ]
 
 
 class RegistrationSerilizer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(required=True)
-    bio = serializers.CharField(required=True)
-    phone_no = serializers.CharField(required=True)
-    address = serializers.CharField(required=True)
+    # bio = serializers.CharField(required=True)
+    # phone_no = serializers.CharField(required=True)
+    # address = serializers.CharField(required=True)
 
     class Meta:
         model = User
@@ -50,13 +59,16 @@ class RegistrationSerilizer(serializers.ModelSerializer):
             )
 
         account = User(
-            username=username, first_name=first_name, last_name=last_name, email=email
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            bio=bio,
+            phone_no=phone_no,
+            address=address,
         )
         account.set_password(password1)
         account.save()
-
-        shelter = Shelter(user=account, bio=bio, phone_no=phone_no, address=address)
-        shelter.save()
 
         return account
 

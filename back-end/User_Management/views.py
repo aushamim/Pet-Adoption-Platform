@@ -1,13 +1,31 @@
+from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import (
+    AllowAny,
+    IsAuthenticated,
+    IsAuthenticatedOrReadOnly,
+)
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.authtoken.models import Token
 
-from User_Management.serializers import LoginSerilizer, RegistrationSerilizer
+
+from User_Management.models import User
+from User_Management.serializers import (
+    LoginSerilizer,
+    RegistrationSerilizer,
+    UserSerializer,
+)
 
 
 # Create your views here.
+class AllUserViewset(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
 class RegistrationViewset(APIView):
     permission_classes = [AllowAny]
 
@@ -19,6 +37,7 @@ class RegistrationViewset(APIView):
         if serializer.is_valid():
             user = serializer.save()
             token, _ = Token.objects.get_or_create(user=user)
+            login(request, user)
             return Response({"token": token.key, "user_id": user.id})
         return Response(serializer.errors)
 
@@ -47,4 +66,4 @@ class UserLogoutView(APIView):
     def get(self, request):
         request.user.auth_token.delete()
         logout(request)
-        return Response("Logged Out")
+        return Response({"success": "Logged Out"})

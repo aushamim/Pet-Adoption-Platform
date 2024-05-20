@@ -36,9 +36,10 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "Adoptions",
     "Pets",
-    "Shelters",
     "User_Management",
 ]
+
+AUTH_USER_MODEL = "User_Management.User"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
 from Pets.models import Pet
-from Shelters.serializers import ShelterSerializer
+from User_Management.serializers import UserSerializer
 
 
 class PetSerializer(serializers.ModelSerializer):
-    shelter = ShelterSerializer()
+    shelter = UserSerializer()
 
     class Meta:
         model = Pet

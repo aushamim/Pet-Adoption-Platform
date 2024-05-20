@@ -1,16 +1,16 @@
 from django.db import models
 
-from Shelters.models import Shelter
+from User_Management.models import User
 
 
 # Create your models here.
-
 category_choices = (("Cat", "Cat"), ("Dog", "Dog"), ("Bird", "Bird"))
 adoption_status = (("pending", "pending"), ("adopted", "adopted"))
 
 
 class Pet(models.Model):
-    shelter = models.OneToOneField(Shelter, on_delete=models.CASCADE)
+    pass
+    shelter = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     catagory = models.CharField(max_length=20, choices=category_choices)
     breed = models.CharField(max_length=100)
