@@ -39,4 +39,4 @@
   -
   - Logout
   - API Route: [`/user/logout/`](http://127.0.0.1:8000/user/logout/)
--
+- <a href="https://example.com" style="text-decoration:none;">`Example Link`</a>
