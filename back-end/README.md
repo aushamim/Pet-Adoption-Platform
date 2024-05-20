@@ -32,11 +32,11 @@
 
 - User
   - Registration
-  - API Route: [`/user/register/`](http://127.0.0.1:8000/user/register/)
+  - API Route: `/user/register/` [`↗️`](http://127.0.0.1:8000/user/register/)
   -
   - Login
-  - API Route: [`/user/login/`](http://127.0.0.1:8000/user/login/)
+  - API Route: `/user/login/` [`↗️`](http://127.0.0.1:8000/user/login/)
   -
   - Logout
-  - API Route: [`/user/logout/`](http://127.0.0.1:8000/user/logout/)
-- <a href="https://example.com" style="text-decoration:none;">`Example Link`</a>
+  - API Route: `/user/logout/` [↗️](http://127.0.0.1:8000/user/logout/)
+-
