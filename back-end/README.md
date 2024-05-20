@@ -30,4 +30,13 @@
 
 ## API Documentation
 
+- User
+  - Registration
+  - API Route: [`/user/register/`](http://127.0.0.1:8000/user/register/)
+  -
+  - Login
+  - API Route: [`/user/login/`](http://127.0.0.1:8000/user/login/)
+  -
+  - Logout
+  - API Route: [`/user/logout/`](http://127.0.0.1:8000/user/logout/)
 -
