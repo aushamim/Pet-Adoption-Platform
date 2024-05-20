@@ -30,7 +30,7 @@
 
 ## API Documentation
 
-- User
+- ### User
   - Registration
   - API Route: `/user/register/` [↗️](https://pet-adoption-platform.onrender.com/user/register/)
   -
@@ -39,4 +39,11 @@
   -
   - Logout
   - API Route: `/user/logout/` [↗️](https://pet-adoption-platform.onrender.com/user/logout/)
--
+- ### Pets
+  - All Pets
+  - API Route: `/pet/all/` [↗️](https://pet-adoption-platform.onrender.com/pet/all/)
+  -
+- ### Shelters
+  - All Shelters
+  - API Route: `/shelter/all/` [↗️](https://pet-adoption-platform.onrender.com/shelter/all/)
+  -
