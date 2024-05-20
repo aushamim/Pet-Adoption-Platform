@@ -4,7 +4,7 @@
 
 #
 
-### Live Link: [HappyTails (Back-End)]()
+### Live Link: [HappyTails (Back-End)](https://pet-adoption-platform.onrender.com)
 
 #
 
@@ -32,11 +32,11 @@
 
 - User
   - Registration
-  - API Route: `/user/register/` [↗️](http://127.0.0.1:8000/user/register/)
+  - API Route: `/user/register/` [↗️](https://pet-adoption-platform.onrender.com/user/register/)
   -
   - Login
-  - API Route: `/user/login/` [↗️](http://127.0.0.1:8000/user/login/)
+  - API Route: `/user/login/` [↗️](https://pet-adoption-platform.onrender.com/user/login/)
   -
   - Logout
-  - API Route: `/user/logout/` [↗️](http://127.0.0.1:8000/user/logout/)
+  - API Route: `/user/logout/` [↗️](https://pet-adoption-platform.onrender.com/user/logout/)
 -
