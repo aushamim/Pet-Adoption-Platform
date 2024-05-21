@@ -17,10 +17,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["pet-adoption-platform.onrender.com", "127.0.0.1"]
 CSRF_TRUSTED_ORIGINS = ["https://pet-adoption-platform.onrender.com"]
-# CORS_ORIGIN_WHITELIST = (
-#     "http://localhost:5173",
-#     "https://oasis-foods.netlify.app",
-# )
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:5173",
+    # "https://oasis-foods.netlify.app",
+)
 
 
 # Application definition
@@ -76,21 +76,21 @@ WSGI_APPLICATION = "HappyTails.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": dj_database_url.config(
-        default=env("RENDER_DB_URL"),
-    )
-}
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": env("NAME"),
-#         "USER": env("USER"),
-#         "PASSWORD": env("PASSWORD"),
-#         "HOST": env("HOST"),
-#         "PORT": env("PORT"),
-#     }
+#     "default": dj_database_url.config(
+#         default=env("RENDER_DB_URL"),
+#     )
 # }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("NAME"),
+        "USER": env("USER"),
+        "PASSWORD": env("PASSWORD"),
+        "HOST": env("HOST"),
+        "PORT": env("PORT"),
+    }
+}
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [

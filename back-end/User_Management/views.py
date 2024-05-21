@@ -19,11 +19,24 @@ from User_Management.serializers import (
 
 
 # Create your views here.
-class AllUserViewset(viewsets.ModelViewSet):
+class UserViewset(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    def list(self, request):
+        user_id = request.query_params.get("user_id")
+        if user_id == "" or not user_id.isnumeric():
+            return Response(
+                {"error": "An User ID is required if `user_id` is specified."}
+            )
+        if user_id is not None:
+            queryset = self.queryset.filter(id=user_id)
+        else:
+            queryset = self.queryset
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
 
 
 class RegistrationViewset(APIView):

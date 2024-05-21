@@ -39,11 +39,13 @@
   -
   - Logout
   - API Route: `/user/logout/` [↗️](https://pet-adoption-platform.onrender.com/user/logout/)
+  -
+  - All Users
+  - API Route: `/user/list/` [↗️](https://pet-adoption-platform.onrender.com/user/list/)
+  -
+  - Specific Users
+  - API Route: `/user/list/?user_id=<user_id>` [↗️](https://pet-adoption-platform.onrender.com/user/list/?user_id=<user_id>)
 - ### Pets
   - All Pets
   - API Route: `/pet/all/` [↗️](https://pet-adoption-platform.onrender.com/pet/all/)
-  -
-- ### Shelters
-  - All Shelters
-  - API Route: `/shelter/all/` [↗️](https://pet-adoption-platform.onrender.com/shelter/all/)
   -
