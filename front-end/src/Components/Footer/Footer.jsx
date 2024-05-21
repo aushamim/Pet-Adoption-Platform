@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useGlobalState from "../../Hooks/useGlobalState";
 
 const Footer = () => {
+  const { userId } = useGlobalState();
   return (
     <div className="mt-16 bg-white rounded-t-lg shadow-sm bg-opacity-80">
       <div className="xl:grid grid-cols-3 p-5">
@@ -24,7 +26,7 @@ const Footer = () => {
 
         <div className="hidden xl:block mx-auto text-end">
           <Link
-            to="/user/id"
+            to={`/shelter/${userId}`}
             className="font-medium text-[#636363] hover:text-purple-600 block duration-300 mb-3"
           >
             Profile
