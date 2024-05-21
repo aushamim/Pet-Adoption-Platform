@@ -5,11 +5,13 @@ from User_Management.views import (
     RegistrationViewset,
     UserLoginView,
     UserLogoutView,
+    UserUpdateView,
     UserViewset,
 )
 
 router = DefaultRouter()
 router.register("list", UserViewset, basename="all-users")
+router.register("update", UserUpdateView, basename="edit-user")
 urlpatterns = [
     path("", include(router.urls)),
     path("login/", UserLoginView.as_view(), name="login"),

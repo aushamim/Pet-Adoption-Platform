@@ -19,7 +19,7 @@ ALLOWED_HOSTS = ["pet-adoption-platform.onrender.com", "127.0.0.1"]
 CSRF_TRUSTED_ORIGINS = ["https://pet-adoption-platform.onrender.com"]
 CORS_ORIGIN_WHITELIST = (
     "http://localhost:5173",
-    "https://clinquant-churros.netlify.app/",
+    "https://clinquant-churros.netlify.app",
 )
 
 
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework.authtoken",
+    "corsheaders",
     "Adoptions",
     "Pets",
     "User_Management",

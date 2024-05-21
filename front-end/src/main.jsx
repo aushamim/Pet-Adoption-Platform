@@ -12,7 +12,8 @@ import FourOFour from "./Components/FourOFour/FourOFour";
 import HomePage from "./Pages/HomePage/HomePage";
 import Login from "./Pages/User/Login";
 import Register from "./Pages/User/Register";
-import Profile from "./Pages/Profile/Profile";
+import Profile from "./Pages/User/Profile";
+import EditProfile from "./Pages/User/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/shelter/:id",
         element: <Profile />,
+      },
+      {
+        path: "/shelter/edit",
+        element: <EditProfile />,
       },
     ],
   },

@@ -51,7 +51,9 @@ const Profile = () => {
         <div className="flex items-center gap-3 border-b">
           <h1 className="text-2xl font-medium mb-1">Personal Information</h1>
           {id == userId ? (
-            <button className="btn-purple ml-auto">Edit</button>
+            <Link to="/shelter/edit" className="btn-purple ml-auto">
+              Edit
+            </Link>
           ) : (
             ""
           )}

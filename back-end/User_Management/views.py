@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
@@ -8,6 +9,7 @@ from rest_framework.permissions import (
 )
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.authtoken.models import Token
+from rest_framework.authentication import TokenAuthentication
 
 
 from User_Management.models import User
@@ -82,3 +84,19 @@ class UserLogoutView(APIView):
         request.user.auth_token.delete()
         logout(request)
         return Response({"success": "Logged Out"})
+
+
+class UserUpdateView(viewsets.ModelViewSet):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return User.objects.filter(id=self.request.user.pk)
+
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()
+        serializer = self.get_serializer(user, data=request.data, partial=False)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)

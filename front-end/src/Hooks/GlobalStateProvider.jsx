@@ -25,7 +25,7 @@ const GlobalStateProvider = ({ children }) => {
     }
   }, [APIHost, userId]);
 
-  const logout = () => {
+  const logout = (navigate) => {
     const token = localStorage.getItem("token");
     if (!token) {
       toast.error("User not logged in.");
@@ -48,6 +48,7 @@ const GlobalStateProvider = ({ children }) => {
             localStorage.removeItem("token");
             localStorage.removeItem("user_id");
             setUser(localStorage.getItem("user_id") || null);
+            navigate("/");
           }
         })
         .catch((error) => {
