@@ -15,15 +15,11 @@ class UserSerializer(serializers.ModelSerializer):
             "bio",
             "phone_no",
             "address",
-            "date_joined",
         ]
 
 
 class RegistrationSerilizer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(required=True)
-    # bio = serializers.CharField(required=True)
-    # phone_no = serializers.CharField(required=True)
-    # address = serializers.CharField(required=True)
 
     class Meta:
         model = User

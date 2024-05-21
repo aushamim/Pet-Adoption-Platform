@@ -114,7 +114,7 @@ const Login = () => {
             </Link>
           </p>
 
-          <input className="btn-purple" type="submit" value="Login" />
+          <input className="btn-purple ml-3" type="submit" value="Login" />
         </div>
       </form>
     </div>

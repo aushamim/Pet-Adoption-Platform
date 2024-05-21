@@ -281,7 +281,7 @@ const Register = () => {
               Login here.
             </Link>
           </p>
-          <input className="btn-purple" type="submit" value="Register" />
+          <input className="btn-purple ml-3" type="submit" value="Register" />
         </div>
       </form>
     </div>

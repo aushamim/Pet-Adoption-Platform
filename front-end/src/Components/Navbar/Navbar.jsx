@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import useGlobalState from "../../Hooks/useGlobalState";
 
 const Navbar = () => {
-  const { user, logout } = useGlobalState();
+  const { user, userId, logout } = useGlobalState();
 
   return (
-    <div className="grid grid-cols-2 p-5 my-5 bg-white shadow rounded-lg bg-opacity-80">
+    <div className="grid grid-cols-2 p-5 my-5 bg-white shadow-sm rounded-lg bg-opacity-80">
       <div className="text-3xl font-bold flex items-center">
         <Link to="/">
           <span className="text-purple-500">Happy</span>Pals
         </Link>
       </div>
 
-      <div className="hidden xl:flex text-center font-semibold items-center justify-end pr-3">
+      <div className="hidden xl:flex text-center font-medium items-center justify-end pr-3">
         <Link
           to="/"
           className=" text-gray-500 hover:text-purple-500 duration-300"
@@ -32,7 +32,7 @@ const Navbar = () => {
           Adoption Requests
         </Link>
         <Link
-          to="/profile"
+          to={`/shelter/${userId}`}
           className="ml-5 text-gray-500 hover:text-purple-500 duration-300"
         >
           Profile
@@ -113,7 +113,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="/profile"
+                to={`/shelter/${userId}`}
                 className="text-gray-500 hover:text-purple-500 duration-300"
               >
                 Profile

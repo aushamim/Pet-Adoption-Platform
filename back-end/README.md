@@ -49,3 +49,5 @@
   - All Pets
   - API Route: `/pet/all/` [↗️](https://pet-adoption-platform.onrender.com/pet/all/)
   -
+  - All Pets of a Shelter
+  - API Route: `/pet/all/?shelter_id=<shelter's_id>` [↗️](https://pet-adoption-platform.onrender.com/pet/all/?shelter_id=<shelter's_id>)

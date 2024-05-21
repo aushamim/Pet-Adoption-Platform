@@ -9,8 +9,7 @@ adoption_status = (("pending", "pending"), ("adopted", "adopted"))
 
 
 class Pet(models.Model):
-    pass
-    shelter = models.OneToOneField(User, on_delete=models.CASCADE)
+    shelter = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     catagory = models.CharField(max_length=20, choices=category_choices)
     breed = models.CharField(max_length=100)
