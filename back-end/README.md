@@ -8,7 +8,7 @@
 
 #
 
-### Run the following command to start the project
+### Run the following command to start the project in development mode
 
 `py manage.py runserver `
 

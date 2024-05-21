@@ -27,11 +27,13 @@ class UserViewset(viewsets.ModelViewSet):
 
     def list(self, request):
         user_id = request.query_params.get("user_id")
-        if user_id == "" or not user_id.isnumeric():
-            return Response(
-                {"error": "An User ID is required if `user_id` is specified."}
-            )
         if user_id is not None:
+            if user_id == "" or not user_id.isnumeric():
+                return Response(
+                    {
+                        "error": "A numeric User ID is required if `user_id` is specified."
+                    }
+                )
             queryset = self.queryset.filter(id=user_id)
         else:
             queryset = self.queryset

@@ -7,6 +7,7 @@ import Layout from "./Components/Layout/Layout";
 import FourOFour from "./Components/FourOFour/FourOFour";
 import HomePage from "./Pages/HomePage/HomePage";
 import Login from "./Pages/User/Login";
+import Register from "./Pages/User/Register";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },

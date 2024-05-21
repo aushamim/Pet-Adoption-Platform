@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useGlobalState from "../../Hooks/useGlobalState";
 
 const Navbar = () => {
-  const { user } = useGlobalState();
+  const { user, logout } = useGlobalState();
 
   return (
     <div className="grid grid-cols-2 p-5 my-5 bg-white shadow rounded-lg bg-opacity-80">
@@ -38,12 +38,14 @@ const Navbar = () => {
           Profile
         </Link>
         {user ? (
-          <btn
-            to="/logout"
+          <button
             className="ml-5 text-gray-500 hover:text-purple-500 duration-300"
+            onClick={() => {
+              logout();
+            }}
           >
             Logout
-          </btn>
+          </button>
         ) : (
           <Link
             to="/login"
@@ -119,12 +121,14 @@ const Navbar = () => {
             </li>
             <li>
               {user ? (
-                <btn
-                  to="/logout"
+                <button
                   className="text-gray-500 hover:text-purple-500 duration-300"
+                  onClick={() => {
+                    logout();
+                  }}
                 >
                   Logout
-                </btn>
+                </button>
               ) : (
                 <Link
                   to="/login"

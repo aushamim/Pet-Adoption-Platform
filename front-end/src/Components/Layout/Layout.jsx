@@ -27,7 +27,7 @@ const Layout = () => {
         <Navbar></Navbar>
 
         {/* All Pages */}
-        <div className="min-h-[85vh]">
+        <div className="min-h-[50vh] md:min-h-[70vh]">
           <Outlet></Outlet>
         </div>
 

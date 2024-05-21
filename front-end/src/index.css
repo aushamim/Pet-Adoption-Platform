@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,12 +18,12 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Fredoka", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light;
-  color: #213547;
+  color: #374958;
   background-color: #f1f5f9;
 
   font-synthesis: none;
@@ -36,4 +38,8 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.btn-purple {
+  @apply text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none shadow-lg shadow-purple-500/50 font-medium rounded-lg text-sm px-5 py-2 text-center ml-3 mb-2 focus:scale-90 duration-300 cursor-pointer;
 }
