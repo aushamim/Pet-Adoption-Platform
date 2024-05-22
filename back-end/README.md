@@ -44,10 +44,10 @@
   - API Route: `/user/list/` [↗️](https://pet-adoption-platform.onrender.com/user/list/)
   -
   - Specific Users
-  - API Route: `/user/list/?user_id=<user_id>` [↗️](https://pet-adoption-platform.onrender.com/user/list/?user_id=2)
+  - API Route: `/user/list/<user_id>/` [↗️](https://pet-adoption-platform.onrender.com/user/list/2/)
   -
   - Update User Information
-  - API Route (PUT Request): `/user/update/<user_id>/` [↗️](https://pet-adoption-platform.onrender.com/user/update/<user_id>/)
+  - API Route (PUT Request): `/user/update/<user_id>/` [↗️](https://pet-adoption-platform.onrender.com/user/update/2/)
 - ### Pets
   - All Pets
   - API Route: `/pet/all/` [↗️](https://pet-adoption-platform.onrender.com/pet/all/)
@@ -56,4 +56,10 @@
   - API Route: `/pet/all/?shelter_id=<shelter's_id>` [↗️](https://pet-adoption-platform.onrender.com/pet/all/?shelter_id=2)
   -
   - Specific Pet
-  - API Route: `/pet/all/?pet_id=<pet_id>` [↗️](https://pet-adoption-platform.onrender.com/pet/all/?pet_id=1)
+  - API Route: `/pet/all/<pet_id>/` [↗️](https://pet-adoption-platform.onrender.com/pet/all/2/)
+  -
+  - Update Pet
+  - API Route (PUT Request): `/pet/update/<pet_id>/` [↗️](https://pet-adoption-platform.onrender.com/pet/update/2/)
+  -
+  - Delete Pet
+  - API Route (DELETE Request): `/pet/delete/<pet_id>/` [↗️](https://pet-adoption-platform.onrender.com/pet/delete/2/)

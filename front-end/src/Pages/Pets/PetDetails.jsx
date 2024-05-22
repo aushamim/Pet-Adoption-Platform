@@ -1,20 +1,52 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useGlobalState from "../../Hooks/useGlobalState";
 import { useEffect, useState } from "react";
 import Loader from "../../Components/Loader/Loader";
+import { toast } from "sonner";
+
+const handleDelete = (APIHost, petId, loadPets, navigate) => {
+  const token = localStorage.getItem("token");
+  const promise = () => {
+    return fetch(`${APIHost}/pet/delete/${petId}/`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        loadPets();
+        return data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  toast.promise(promise, {
+    loading: "Removing pet information. Please wait.",
+    success: "Pet information removed successfully",
+    error: (error) => {
+      return error;
+    },
+  });
+
+  navigate(-1, { replace: true });
+};
 
 const PetDetails = () => {
-  const { APIHost, userId } = useGlobalState();
+  const { APIHost, userId, loadPets } = useGlobalState();
+  const navigate = useNavigate();
   const { id } = useParams();
   const [petDetails, setPetDetails] = useState({});
   const [petDetailsLoading, setPetDetailsLoading] = useState(true);
 
   useEffect(() => {
     setPetDetailsLoading(true);
-    fetch(`${APIHost}/pet/all/?pet_id=${id}`)
+    fetch(`${APIHost}/pet/all/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setPetDetails(data[0]);
+        setPetDetails(data);
         setPetDetailsLoading(false);
       });
   }, [APIHost, id]);
@@ -29,7 +61,7 @@ const PetDetails = () => {
       <div className="mt-5 grid grid-cols-1 xl:grid-cols-2 gap-5">
         <div className="bg-white p-5 bg-opacity-80 rounded-lg shadow-sm">
           <img
-            className="w-full object-cover rounded-lg"
+            className="w-full h-auto max-h-80 xl:max-h-96 object-cover rounded-lg"
             src={
               petDetails?.image
                 ? petDetails?.image
@@ -106,8 +138,20 @@ const PetDetails = () => {
             >
               {petDetails?.shelter?.id == userId ? (
                 <>
-                  <button className="btn-purple">Edit</button>
-                  <button className="btn-red">Delete</button>
+                  <Link
+                    to={`/pets/${petDetails?.id}/edit`}
+                    className="btn-purple"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => {
+                      handleDelete(APIHost, petDetails?.id, loadPets, navigate);
+                    }}
+                    className="btn-red"
+                  >
+                    Delete
+                  </button>
                   <button className="btn-lime">Give Adoption</button>
                 </>
               ) : (

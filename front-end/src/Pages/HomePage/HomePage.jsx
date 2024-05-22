@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="mt-5 xl:mt-10">
       <div
-        className="grid grid-cols-2 bg-cover bg-no-repeat h-52 lg:h-[35rem] 2xl:h-[48rem] rounded-lg"
+        className="grid grid-cols-2 bg-cover bg-no-repeat h-52 lg:h-[35rem] 2xl:h-[48rem] rounded-lg shadow-sm"
         style={{ backgroundImage: "url(/assets/images/hero.png)" }}
       >
         <div className="flex flex-col justify-center pl-5 lg:pl-10 2xl:pl-20">

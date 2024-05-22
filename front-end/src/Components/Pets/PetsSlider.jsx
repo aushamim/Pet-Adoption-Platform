@@ -4,6 +4,7 @@ import "swiper/css";
 import useGlobalState from "../../Hooks/useGlobalState";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import { useEffect, useState } from "react";
 
 const shortenDescription = (description) => {
   if (description.length <= 25) {
@@ -15,6 +16,14 @@ const shortenDescription = (description) => {
 
 const PetsSlider = () => {
   const { pets, petsLoading } = useGlobalState();
+  const [filteredPets, setFilteredPets] = useState([]);
+  useEffect(() => {
+    if (pets.length <= 6) {
+      setFilteredPets(pets);
+    } else {
+      setFilteredPets(pets.slice(0, 6));
+    }
+  }, [pets]);
   return (
     <div className="mt-3 bg-white bg-opacity-80 rounded-lg shadow-sm p-5">
       {petsLoading ? (
@@ -41,7 +50,7 @@ const PetsSlider = () => {
           modules={[Autoplay, EffectCoverflow]}
           className="mySwiper"
         >
-          {pets?.map((pet) => (
+          {filteredPets?.map((pet) => (
             <SwiperSlide key={pet?.id} className="rounded-lg overflow-hidden">
               <Link to={`/pets/${pet?.id}`}>
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 bg-purple-50">

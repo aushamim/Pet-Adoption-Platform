@@ -17,11 +17,11 @@ const GlobalStateProvider = ({ children }) => {
 
   useEffect(() => {
     if (userId) {
-      fetch(`${APIHost}/user/list/?user_id=${userId}`)
+      fetch(`${APIHost}/user/list/${userId}/`)
         .then((res) => res.json())
         .then((data) => {
-          if (data.length > 0) {
-            setUser(data[0]);
+          if (data?.username) {
+            setUser(data);
           }
         });
     }

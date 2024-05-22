@@ -17,7 +17,7 @@ const Pets = () => {
     if (pets.length <= 6) {
       setFilteredPets(pets);
     } else {
-      setFilteredPets(pets);
+      setFilteredPets(pets.slice(0, 6));
     }
   }, [pets]);
   return (

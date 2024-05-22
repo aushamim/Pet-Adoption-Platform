@@ -29,10 +29,10 @@ const Profile = () => {
       setShelterLoading(false);
     } else {
       setShelterLoading(true);
-      fetch(`${APIHost}/user/list/?user_id=${id}`)
+      fetch(`${APIHost}/user/list/${id}/`)
         .then((res) => res.json())
         .then((data) => {
-          setShelter(data[0]);
+          setShelter(data);
           setShelterLoading(false);
         });
     }

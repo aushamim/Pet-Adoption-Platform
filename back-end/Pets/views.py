@@ -29,9 +29,14 @@ class AllPetViewset(viewsets.ModelViewSet):
         return Pet.objects.all()
 
 
-class AddPetViewset(viewsets.ModelViewSet):
+class ManagePetViewset(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
     queryset = Pet.objects.all()
     serializer_class = AddPetSerializer
+
+    def destroy(self, request, *args, **kwargs):
+        pet = self.get_object()
+        self.perform_destroy(pet)
+        return Response({"success": "Pet Deleted Successfully"})

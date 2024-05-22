@@ -17,6 +17,7 @@ import EditProfile from "./Pages/User/EditProfile";
 import Pets from "./Pages/Pets/Pets";
 import PetDetails from "./Pages/Pets/PetDetails";
 import AddPet from "./Pages/Pets/AddPet";
+import EditPet from "./Pages/Pets/EditPet";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/pets/add",
         element: <AddPet />,
+      },
+      {
+        path: "/pets/:id/edit",
+        element: <EditPet />,
       },
     ],
   },
