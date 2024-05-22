@@ -59,7 +59,7 @@
   - API Route: `/pet/all/<pet_id>/` [↗️](https://pet-adoption-platform.onrender.com/pet/all/2/)
   -
   - Update Pet
-  - API Route (PUT Request): `/pet/update/<pet_id>/` [↗️](https://pet-adoption-platform.onrender.com/pet/update/2/)
+  - API Route (PUT/PATCH Request): `/pet/update/<pet_id>/` [↗️](https://pet-adoption-platform.onrender.com/pet/update/2/)
   -
   - Delete Pet
   - API Route (DELETE Request): `/pet/delete/<pet_id>/` [↗️](https://pet-adoption-platform.onrender.com/pet/delete/2/)
@@ -72,3 +72,12 @@
   -
   - All Adoption Records except a User
   - API Route: `/adoption/all/?not_applicant_id=<user_id>` [↗️](https://pet-adoption-platform.onrender.com/adoption/all/?not_applicant_id=2)
+  -
+  - Add a Record
+  - API Route (POST request): `/adoption/request/` [↗️](https://pet-adoption-platform.onrender.com/adoption/request/)
+  -
+  - Update a Record
+  - API Route (PATCH request): `/adoption/respond/<adoption_id>/` [↗️](https://pet-adoption-platform.onrender.com/adoption/respond/2/)
+  -
+  - Delete a Record
+  - API Route (DELETE request): `/adoption/delete/<adoption_id>/` [↗️](https://pet-adoption-platform.onrender.com/adoption/delete/2/)
