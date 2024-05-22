@@ -11,7 +11,7 @@ const shortenDescription = (description) => {
 };
 
 const Pets = () => {
-  const { APIHost, pets } = useGlobalState();
+  const { pets } = useGlobalState();
   const [filteredPets, setFilteredPets] = useState([]);
   useEffect(() => {
     if (pets.length <= 6) {
@@ -28,11 +28,7 @@ const Pets = () => {
             <div>
               <img
                 className="w-full h-80 object-cover"
-                src={
-                  pet?.image
-                    ? APIHost + pet?.image
-                    : "/assets/images/default-pet.jpg"
-                }
+                src={pet?.image ? pet?.image : "/assets/images/default-pet.jpg"}
                 alt={pet?.name}
               />
             </div>

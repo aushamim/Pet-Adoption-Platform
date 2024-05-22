@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useGlobalState from "../../Hooks/useGlobalState";
 
 const Pets = () => {
-  const { APIHost, pets } = useGlobalState();
+  const { pets } = useGlobalState();
   return (
     <div>
       <div className="mt-5 bg-white bg-opacity-80 rounded-lg shadow-sm p-5">
@@ -20,9 +20,7 @@ const Pets = () => {
             className="w-full h-56 xl:h-96 relative bg-cover bg-no-repeat bg-center rounded-lg overflow-hidden shadow-sm hover:scale-[1.02] duration-300"
             style={{
               backgroundImage: `url(${
-                pet?.image
-                  ? APIHost + pet?.image
-                  : "/assets/images/default-pet.jpg"
+                pet?.image ? pet?.image : "/assets/images/default-pet.jpg"
               })`,
             }}
           >

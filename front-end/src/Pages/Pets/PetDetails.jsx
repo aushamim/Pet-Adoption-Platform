@@ -32,14 +32,14 @@ const PetDetails = () => {
             className="w-full object-cover rounded-lg"
             src={
               petDetails?.image
-                ? APIHost + petDetails?.image
+                ? petDetails?.image
                 : "/assets/images/default-pet.jpg"
             }
             alt={petDetails?.name}
           />
         </div>
         <div className="flex flex-col">
-          <div className="bg-white p-5 bg-opacity-80 rounded-lg shadow-sm flex-grow flex">
+          <div className="bg-white p-5 bg-opacity-80 rounded-lg shadow-sm flex-grow">
             <table>
               <tbody className="text-sm 2xl:text-lg">
                 <tr>

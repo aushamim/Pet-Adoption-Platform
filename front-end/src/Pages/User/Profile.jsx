@@ -126,7 +126,7 @@ const Profile = () => {
               effect={"cards"}
               grabCursor={true}
               modules={[EffectCards]}
-              className="mySwiper w-5/6"
+              className="mySwiper w-4/6 xl:w-5/6"
             >
               {shelterPets?.map((pet) => (
                 <SwiperSlide
@@ -137,10 +137,10 @@ const Profile = () => {
                     <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-3 bg-purple-50">
                       <div>
                         <img
-                          className="w-full h-52 object-cover"
+                          className="w-full h-40 xl:h-64 object-cover"
                           src={
                             pet?.image
-                              ? APIHost + pet?.image
+                              ? pet?.image
                               : "/assets/images/default-pet.jpg"
                           }
                           alt={pet?.name}
@@ -148,7 +148,7 @@ const Profile = () => {
                       </div>
                       <div className="p-3">
                         <table>
-                          <tbody className="xl:text-xs 2xl:text-base">
+                          <tbody className="text-xs 2xl:text-base">
                             <tr>
                               <td className="pb-1 font-medium">Status:</td>
                               <td className="pb-1 pl-2">

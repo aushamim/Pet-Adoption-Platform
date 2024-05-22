@@ -14,7 +14,7 @@ const shortenDescription = (description) => {
 };
 
 const PetsSlider = () => {
-  const { APIHost, pets, petsLoading } = useGlobalState();
+  const { pets, petsLoading } = useGlobalState();
   return (
     <div className="mt-3 bg-white bg-opacity-80 rounded-lg shadow-sm p-5">
       {petsLoading ? (
@@ -47,10 +47,10 @@ const PetsSlider = () => {
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 bg-purple-50">
                   <div>
                     <img
-                      className="w-full h-80 object-cover"
+                      className="w-full h-40 object-cover"
                       src={
                         pet?.image
-                          ? APIHost + pet?.image
+                          ? pet?.image
                           : "/assets/images/default-pet.jpg"
                       }
                       alt={pet?.name}
@@ -110,7 +110,7 @@ const PetsSlider = () => {
                 <div className="invisible">
                   <div>
                     <img
-                      className="w-full h-80 object-cover"
+                      className="w-full h-40 object-cover"
                       src="/default-pet.jpg"
                       alt=""
                     />
