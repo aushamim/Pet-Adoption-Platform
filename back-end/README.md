@@ -44,7 +44,7 @@
   - API Route: `/user/list/` [↗️](https://pet-adoption-platform.onrender.com/user/list/)
   -
   - Specific Users
-  - API Route: `/user/list/?user_id=<user_id>` [↗️](https://pet-adoption-platform.onrender.com/user/list/?user_id=<user_id>)
+  - API Route: `/user/list/?user_id=<user_id>` [↗️](https://pet-adoption-platform.onrender.com/user/list/?user_id=2)
   -
   - Update User Information
   - API Route (PUT Request): `/user/update/<user_id>/` [↗️](https://pet-adoption-platform.onrender.com/user/update/<user_id>/)
@@ -53,4 +53,7 @@
   - API Route: `/pet/all/` [↗️](https://pet-adoption-platform.onrender.com/pet/all/)
   -
   - All Pets of a Shelter
-  - API Route: `/pet/all/?shelter_id=<shelter's_id>` [↗️](https://pet-adoption-platform.onrender.com/pet/all/?shelter_id=<shelter's_id>)
+  - API Route: `/pet/all/?shelter_id=<shelter's_id>` [↗️](https://pet-adoption-platform.onrender.com/pet/all/?shelter_id=2)
+  -
+  - Specific Pet
+  - API Route: `/pet/all/?pet_id=<pet_id>` [↗️](https://pet-adoption-platform.onrender.com/pet/all/?pet_id=1)

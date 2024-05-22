@@ -21,7 +21,10 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="bg-repeat" style={{ backgroundImage: "url(/bg.png)" }}>
+    <div
+      className="bg-repeat"
+      style={{ backgroundImage: "url(/assets/images/bg.png)" }}
+    >
       <Toaster richColors />
       <div className="w-11/12 xl:w-3/4 mx-auto">
         <Navbar></Navbar>

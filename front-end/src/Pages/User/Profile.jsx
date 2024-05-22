@@ -111,7 +111,9 @@ const Profile = () => {
         <div className="flex items-center gap-3 border-b">
           <h1 className="text-2xl font-medium mb-1">Pets</h1>
           {id == userId ? (
-            <button className="btn-purple ml-auto">Add</button>
+            <Link to="/pets/add" className="btn-purple ml-auto">
+              Add
+            </Link>
           ) : (
             ""
           )}
@@ -136,7 +138,11 @@ const Profile = () => {
                       <div>
                         <img
                           className="w-full h-52 object-cover"
-                          src="http://127.0.0.1:8000/media/Pets/British_Shorthair_UJnKnxL.jpg"
+                          src={
+                            pet?.image
+                              ? APIHost + pet?.image
+                              : "/assets/images/default-pet.jpg"
+                          }
                           alt={pet?.name}
                         />
                       </div>

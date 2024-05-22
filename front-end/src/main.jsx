@@ -14,6 +14,9 @@ import Login from "./Pages/User/Login";
 import Register from "./Pages/User/Register";
 import Profile from "./Pages/User/Profile";
 import EditProfile from "./Pages/User/EditProfile";
+import Pets from "./Pages/Pets/Pets";
+import PetDetails from "./Pages/Pets/PetDetails";
+import AddPet from "./Pages/Pets/AddPet";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,18 @@ const router = createBrowserRouter([
       {
         path: "/shelter/edit",
         element: <EditProfile />,
+      },
+      {
+        path: "/pets",
+        element: <Pets />,
+      },
+      {
+        path: "/pets/:id",
+        element: <PetDetails />,
+      },
+      {
+        path: "/pets/add",
+        element: <AddPet />,
       },
     ],
   },

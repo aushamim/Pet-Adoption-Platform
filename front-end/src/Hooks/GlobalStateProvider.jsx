@@ -5,8 +5,8 @@ import { toast } from "sonner";
 export const GlobalContext = createContext(null);
 
 const GlobalStateProvider = ({ children }) => {
-  const APIHost = "https://pet-adoption-platform.onrender.com";
-  // const APIHost = "http://127.0.0.1:8000";
+  // const APIHost = "https://pet-adoption-platform.onrender.com";
+  const APIHost = "http://127.0.0.1:8000";
 
   const [userId, setUserId] = useState(
     parseInt(localStorage.getItem("user_id")) || null

@@ -49,7 +49,9 @@ const PetsSlider = () => {
                     <img
                       className="w-full h-80 object-cover"
                       src={
-                        pet?.image ? APIHost + pet?.image : "/default-pet.jpg"
+                        pet?.image
+                          ? APIHost + pet?.image
+                          : "/assets/images/default-pet.jpg"
                       }
                       alt={pet?.name}
                     />

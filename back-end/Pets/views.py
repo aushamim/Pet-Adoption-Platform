@@ -15,6 +15,7 @@ class AllPetViewset(viewsets.ModelViewSet):
 
     def list(self, request):
         shelter_id = request.query_params.get("shelter_id")
+        pet_id = request.query_params.get("pet_id")
         if shelter_id is not None:
             if shelter_id == "" or not shelter_id.isnumeric():
                 return Response(
@@ -23,6 +24,12 @@ class AllPetViewset(viewsets.ModelViewSet):
                     }
                 )
             queryset = self.queryset.filter(shelter__id=shelter_id)
+        elif pet_id is not None:
+            if pet_id == "" or not pet_id.isnumeric():
+                return Response(
+                    {"error": "A numeric Pet ID is required if `pet_id` is specified."}
+                )
+            queryset = self.queryset.filter(id=pet_id)
         else:
             queryset = self.queryset
         serializer = self.serializer_class(queryset, many=True)
