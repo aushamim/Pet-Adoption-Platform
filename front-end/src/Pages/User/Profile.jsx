@@ -61,36 +61,49 @@ const Profile = () => {
         {shelterLoading ? (
           <Loader />
         ) : (
-          <table className="mt-5">
-            <tbody>
-              <tr>
-                <td className="pb-2 font-medium">Username:</td>
-                <td className="pl-2 pb-2">{shelter?.username}</td>
-              </tr>
-              <tr>
-                <td className="pb-2 font-medium">Name:</td>
-                <td className="pl-2 pb-2">
-                  {shelter?.first_name} {shelter?.last_name}
-                </td>
-              </tr>
-              <tr>
-                <td className="pb-2 font-medium">Email:</td>
-                <td className="pl-2 pb-2">{shelter?.email}</td>
-              </tr>
-              <tr>
-                <td className="pb-2 font-medium">Phone No.:</td>
-                <td className="pl-2 pb-2">{shelter?.phone_no}</td>
-              </tr>
-              <tr>
-                <td className="pb-2 font-medium">Address:</td>
-                <td className="pl-2 pb-2">{shelter?.address}</td>
-              </tr>
-              <tr>
-                <td className="pb-2 font-medium">Number of Pets:</td>
-                <td className="pl-2 pb-2">{shelterPets?.length}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="mt-5">
+            {shelter?.bio ? (
+              <div className="mb-3">
+                <blockquote className="p-4 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500">
+                  <p className="text-sm italic font-medium leading-relaxed text-gray-900">
+                    {shelter?.bio}
+                  </p>
+                </blockquote>
+              </div>
+            ) : (
+              ""
+            )}
+            <table>
+              <tbody>
+                <tr>
+                  <td className="pb-2 font-medium">Username:</td>
+                  <td className="pl-2 pb-2">{shelter?.username}</td>
+                </tr>
+                <tr>
+                  <td className="pb-2 font-medium">Name:</td>
+                  <td className="pl-2 pb-2">
+                    {shelter?.first_name} {shelter?.last_name}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="pb-2 font-medium">Email:</td>
+                  <td className="pl-2 pb-2">{shelter?.email}</td>
+                </tr>
+                <tr>
+                  <td className="pb-2 font-medium">Phone No.:</td>
+                  <td className="pl-2 pb-2">{shelter?.phone_no}</td>
+                </tr>
+                <tr>
+                  <td className="pb-2 font-medium">Address:</td>
+                  <td className="pl-2 pb-2">{shelter?.address}</td>
+                </tr>
+                <tr>
+                  <td className="pb-2 font-medium">Number of Pets:</td>
+                  <td className="pl-2 pb-2">{shelterPets?.length}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
 
@@ -118,18 +131,18 @@ const Profile = () => {
                   key={pet?.id}
                   className="rounded-lg overflow-hidden"
                 >
-                  <Link to="/pets/5">
+                  <Link to={`/pets/${pet?.id}`}>
                     <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-3 bg-purple-50">
                       <div>
                         <img
                           className="w-full h-52 object-cover"
                           src="http://127.0.0.1:8000/media/Pets/British_Shorthair_UJnKnxL.jpg"
-                          alt=""
+                          alt={pet?.name}
                         />
                       </div>
                       <div className="p-3">
                         <table>
-                          <tbody>
+                          <tbody className="xl:text-xs 2xl:text-base">
                             <tr>
                               <td className="pb-1 font-medium">Status:</td>
                               <td className="pb-1 pl-2">
@@ -139,7 +152,7 @@ const Profile = () => {
                                   </span>
                                 ) : (
                                   <span className="bg-yellow-200 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">
-                                    Pending
+                                    Available
                                   </span>
                                 )}
                               </td>

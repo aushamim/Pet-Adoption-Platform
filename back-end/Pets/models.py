@@ -4,14 +4,13 @@ from User_Management.models import User
 
 
 # Create your models here.
-category_choices = (("Cat", "Cat"), ("Dog", "Dog"), ("Bird", "Bird"))
-adoption_status = (("pending", "pending"), ("adopted", "adopted"))
+adoption_status = (("available", "available"), ("adopted", "adopted"))
 
 
 class Pet(models.Model):
     shelter = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    catagory = models.CharField(max_length=20, choices=category_choices)
+    catagory = models.CharField(max_length=20)
     breed = models.CharField(max_length=100)
     age = models.IntegerField()
     description = models.TextField()

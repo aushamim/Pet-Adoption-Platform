@@ -5,13 +5,15 @@ import { toast } from "sonner";
 export const GlobalContext = createContext(null);
 
 const GlobalStateProvider = ({ children }) => {
-  const APIHost = "https://pet-adoption-platform.onrender.com";
-  // const APIHost = "http://127.0.0.1:8000";
+  // const APIHost = "https://pet-adoption-platform.onrender.com";
+  const APIHost = "http://127.0.0.1:8000";
 
   const [userId, setUserId] = useState(
     parseInt(localStorage.getItem("user_id")) || null
   );
   const [user, setUser] = useState(null);
+  const [pets, setPets] = useState([]);
+  const [petsLoading, setPetsLoading] = useState(true);
 
   useEffect(() => {
     if (userId) {
@@ -65,6 +67,20 @@ const GlobalStateProvider = ({ children }) => {
     });
   };
 
+  const loadPets = () => {
+    setPetsLoading(false);
+    fetch(`${APIHost}/pet/all/`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPets(data.reverse());
+        setPetsLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    loadPets();
+  }, []);
+
   return (
     <GlobalContext.Provider
       value={{
@@ -74,6 +90,9 @@ const GlobalStateProvider = ({ children }) => {
         user,
         setUser,
         logout,
+        pets,
+        petsLoading,
+        loadPets,
       }}
     >
       {children}

@@ -103,7 +103,6 @@ const EditProfile = () => {
             className="grow"
             placeholder="First Name"
             defaultValue={user?.first_name}
-            required
           />
         </label>
 
@@ -122,7 +121,6 @@ const EditProfile = () => {
             className="grow"
             placeholder="Last Name"
             defaultValue={user?.last_name}
-            required
           />
         </label>
 
@@ -142,7 +140,6 @@ const EditProfile = () => {
             className="grow"
             placeholder="Email"
             defaultValue={user?.email}
-            required
           />
         </label>
 
@@ -164,7 +161,6 @@ const EditProfile = () => {
             className="grow"
             placeholder="Bio"
             defaultValue={user?.bio}
-            required
           />
         </label>
 
@@ -189,7 +185,6 @@ const EditProfile = () => {
             className="grow"
             placeholder="Phone No"
             defaultValue={user?.phone_no}
-            required
           />
         </label>
 
@@ -214,7 +209,6 @@ const EditProfile = () => {
             className="grow"
             placeholder="Address"
             defaultValue={user?.address}
-            required
           />
         </label>
 

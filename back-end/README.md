@@ -47,7 +47,7 @@
   - API Route: `/user/list/?user_id=<user_id>` [↗️](https://pet-adoption-platform.onrender.com/user/list/?user_id=<user_id>)
   -
   - Update User Information
-  - API Route: `/user/update/` [↗️](https://pet-adoption-platform.onrender.com/user/update/)
+  - API Route (PUT Request): `/user/update/<user_id>/` [↗️](https://pet-adoption-platform.onrender.com/user/update/<user_id>/)
 - ### Pets
   - All Pets
   - API Route: `/pet/all/` [↗️](https://pet-adoption-platform.onrender.com/pet/all/)
