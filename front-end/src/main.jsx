@@ -18,6 +18,7 @@ import Pets from "./Pages/Pets/Pets";
 import PetDetails from "./Pages/Pets/PetDetails";
 import AddPet from "./Pages/Pets/AddPet";
 import EditPet from "./Pages/Pets/EditPet";
+import AdoptionRequests from "./Pages/AdoptionRqs/AdoptionRequests";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/pets/:id/edit",
         element: <EditPet />,
+      },
+      {
+        path: "/adoption",
+        element: <AdoptionRequests />,
       },
     ],
   },

@@ -63,3 +63,12 @@
   -
   - Delete Pet
   - API Route (DELETE Request): `/pet/delete/<pet_id>/` [↗️](https://pet-adoption-platform.onrender.com/pet/delete/2/)
+- ### Adoptions
+  - All Adoption Records
+  - API Route: `/adoption/all/` [↗️](https://pet-adoption-platform.onrender.com/adoption/all/)
+  -
+  - All Adoption Records of a User
+  - API Route: `/adoption/all/?applicant_id=<user_id>` [↗️](https://pet-adoption-platform.onrender.com/adoption/all/?applicant_id=2)
+  -
+  - All Adoption Records except a User
+  - API Route: `/adoption/all/?not_applicant_id=<user_id>` [↗️](https://pet-adoption-platform.onrender.com/adoption/all/?not_applicant_id=2)

@@ -4,17 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* For Webkit browsers (Safari, Chrome) */
 ::-webkit-scrollbar {
-  width: 5px; /* Width of the scrollbar */
+  width: 5px;
+  height: 3px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the track */
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the thumb */
+  background: #888;
 }
 
 :root {

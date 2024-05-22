@@ -36,6 +36,14 @@ class ManagePetViewset(viewsets.ModelViewSet):
     queryset = Pet.objects.all()
     serializer_class = AddPetSerializer
 
+    def partial_update(self, request, *args, **kwargs):
+        pet = self.get_object()
+        serializer = self.get_serializer(pet, data=request.data, partial=True)
+        if serializer.is_valid():
+            self.perform_update(serializer)
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
     def destroy(self, request, *args, **kwargs):
         pet = self.get_object()
         self.perform_destroy(pet)

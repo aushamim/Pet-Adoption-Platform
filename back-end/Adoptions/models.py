@@ -5,7 +5,11 @@ from User_Management.models import User
 
 
 # Create your models here.
-adoption_status = (("pending", "pending"), ("adopted", "adopted"))
+adoption_status = (
+    ("pending", "pending"),
+    ("approved", "approved"),
+    ("rejected", "rejected"),
+)
 
 
 class Adoption(models.Model):
@@ -14,7 +18,7 @@ class Adoption(models.Model):
     )
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="adopting_pet")
     timestamp = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=10, choices=adoption_status)
+    status = models.CharField(max_length=10, choices=adoption_status, default="pending")
 
     def __str__(self) -> str:
-        return f"{self.user.username}'s profile"
+        return f"Adoption Request for {self.pet.name}"

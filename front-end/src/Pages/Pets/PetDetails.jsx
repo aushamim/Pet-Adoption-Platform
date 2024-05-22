@@ -34,6 +34,92 @@ const handleDelete = (APIHost, petId, loadPets, navigate) => {
   navigate(-1, { replace: true });
 };
 
+const handleRequest = (APIHost, userId, petId) => {
+  const token = localStorage.getItem("token");
+  const promise = () => {
+    return fetch(`${APIHost}/adoption/request/`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      body: JSON.stringify({ applicant: userId, pet: petId }),
+    })
+      .then((res) => res.json())
+      .then((data) => data)
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  toast.promise(promise, {
+    loading: "Requesting. Please wait.",
+    success: "Successfully requested for adoption.",
+    error: (error) => {
+      return error;
+    },
+  });
+};
+
+const handleAdoption = (APIHost, petId, loadPetDetails) => {
+  const token = localStorage.getItem("token");
+  const promise = () => {
+    return fetch(`${APIHost}/pet/update/${petId}/`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      body: JSON.stringify({ adoption_status: "available" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        loadPetDetails();
+        return data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  toast.promise(promise, {
+    loading: "Working. Please wait.",
+    success: "Success",
+    error: (error) => {
+      return error;
+    },
+  });
+};
+const cancelAdoption = (APIHost, petId, loadPetDetails) => {
+  const token = localStorage.getItem("token");
+  const promise = () => {
+    return fetch(`${APIHost}/pet/update/${petId}/`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      body: JSON.stringify({ adoption_status: "adopted" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        loadPetDetails();
+        return data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  toast.promise(promise, {
+    loading: "Working. Please wait.",
+    success: "Success",
+    error: (error) => {
+      return error;
+    },
+  });
+};
+
 const PetDetails = () => {
   const { APIHost, userId, loadPets } = useGlobalState();
   const navigate = useNavigate();
@@ -41,7 +127,7 @@ const PetDetails = () => {
   const [petDetails, setPetDetails] = useState({});
   const [petDetailsLoading, setPetDetailsLoading] = useState(true);
 
-  useEffect(() => {
+  const loadPetDetails = () => {
     setPetDetailsLoading(true);
     fetch(`${APIHost}/pet/all/${id}`)
       .then((res) => res.json())
@@ -49,6 +135,11 @@ const PetDetails = () => {
         setPetDetails(data);
         setPetDetailsLoading(false);
       });
+  };
+
+  useEffect(() => {
+    loadPetDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [APIHost, id]);
 
   return petDetailsLoading ? (
@@ -152,14 +243,39 @@ const PetDetails = () => {
                   >
                     Delete
                   </button>
-                  <button className="btn-lime">Give Adoption</button>
+                  {petDetails?.adoption_status == "adopted" ? (
+                    <button
+                      onClick={() => {
+                        handleAdoption(APIHost, petDetails?.id, loadPetDetails);
+                      }}
+                      className="btn-lime"
+                    >
+                      Give Adoption
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        cancelAdoption(APIHost, petDetails?.id, loadPetDetails);
+                      }}
+                      className="btn-lime"
+                    >
+                      Adopt Again
+                    </button>
+                  )}
                 </>
               ) : (
                 ""
               )}
               {petDetails?.shelter?.id != userId ? (
                 <>
-                  <button className="btn-green">Request for Adoption</button>
+                  <button
+                    onClick={() => {
+                      handleRequest(APIHost, userId, petDetails?.id);
+                    }}
+                    className="btn-green"
+                  >
+                    Request for Adoption
+                  </button>
                 </>
               ) : (
                 ""
