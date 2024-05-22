@@ -31,6 +31,12 @@
 ## API Documentation
 
 - ### User
+  - Admin Panel [↗️](https://pet-adoption-platform.onrender.com/admin/)
+  - ```shell
+    username: admin
+    password: admin
+    ```
+  -
   - Registration
   - API Route: `/user/register/` [↗️](https://pet-adoption-platform.onrender.com/user/register/)
   -
