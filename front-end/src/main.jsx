@@ -19,6 +19,7 @@ import PetDetails from "./Pages/Pets/PetDetails";
 import AddPet from "./Pages/Pets/AddPet";
 import EditPet from "./Pages/Pets/EditPet";
 import AdoptionRequests from "./Pages/AdoptionRqs/AdoptionRequests";
+import Playground from "./Pages/Playground/Playground";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/adoption",
         element: <AdoptionRequests />,
+      },
+      {
+        path: "/experiment",
+        element: <Playground />,
       },
     ],
   },

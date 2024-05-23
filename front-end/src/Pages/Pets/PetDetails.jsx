@@ -121,7 +121,7 @@ const cancelAdoption = (APIHost, petId, loadPetDetails) => {
 };
 
 const PetDetails = () => {
-  const { APIHost, userId, loadPets } = useGlobalState();
+  const { APIHost, user, userId, loadPets } = useGlobalState();
   const navigate = useNavigate();
   const { id } = useParams();
   const [petDetails, setPetDetails] = useState({});
@@ -210,78 +210,95 @@ const PetDetails = () => {
               </tbody>
             </table>
           </div>
-          <div className="bg-white p-5 bg-opacity-80 mt-5 rounded-lg shadow-sm flex items-center">
-            <h1
-              className={
-                petDetails?.shelter?.id == userId
-                  ? "text-lg font-medium hidden xl:block"
-                  : "text-lg font-medium"
-              }
-            >
-              Actions:
-            </h1>
-            <div
-              className={
-                petDetails?.shelter?.id == userId
-                  ? "mx-auto xl:mr-0 flex items-center -mb-2 gap-3"
-                  : "ml-auto flex items-center -mb-2 gap-3"
-              }
-            >
-              {petDetails?.shelter?.id == userId ? (
-                <>
-                  <Link
-                    to={`/pets/${petDetails?.id}/edit`}
-                    className="btn-purple"
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    onClick={() => {
-                      handleDelete(APIHost, petDetails?.id, loadPets, navigate);
-                    }}
-                    className="btn-red"
-                  >
-                    Delete
-                  </button>
-                  {petDetails?.adoption_status == "adopted" ? (
+          {user ? (
+            <div className="bg-white p-5 bg-opacity-80 mt-5 rounded-lg shadow-sm flex items-center">
+              <h1
+                className={
+                  petDetails?.shelter?.id == userId
+                    ? "text-lg font-medium hidden xl:block"
+                    : "text-lg font-medium"
+                }
+              >
+                Actions:
+              </h1>
+              <div
+                className={
+                  petDetails?.shelter?.id == userId
+                    ? "mx-auto xl:mr-0 flex items-center -mb-2 gap-3"
+                    : "ml-auto flex items-center -mb-2 gap-3"
+                }
+              >
+                {petDetails?.shelter?.id == userId ? (
+                  <>
+                    <Link
+                      to={`/pets/${petDetails?.id}/edit`}
+                      className="btn-purple"
+                    >
+                      Edit
+                    </Link>
                     <button
                       onClick={() => {
-                        handleAdoption(APIHost, petDetails?.id, loadPetDetails);
+                        handleDelete(
+                          APIHost,
+                          petDetails?.id,
+                          loadPets,
+                          navigate
+                        );
                       }}
-                      className="btn-lime"
+                      className="btn-red"
                     >
-                      Give Adoption
+                      Delete
                     </button>
-                  ) : (
+                    {petDetails?.adoption_status == "adopted" ? (
+                      <button
+                        onClick={() => {
+                          handleAdoption(
+                            APIHost,
+                            petDetails?.id,
+                            loadPetDetails
+                          );
+                        }}
+                        className="btn-lime"
+                      >
+                        Give Adoption
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          cancelAdoption(
+                            APIHost,
+                            petDetails?.id,
+                            loadPetDetails
+                          );
+                        }}
+                        className="btn-lime"
+                      >
+                        Adopt Again
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  ""
+                )}
+                {petDetails?.shelter?.id != userId ? (
+                  <>
                     <button
                       onClick={() => {
-                        cancelAdoption(APIHost, petDetails?.id, loadPetDetails);
+                        handleRequest(APIHost, userId, petDetails?.id);
                       }}
-                      className="btn-lime"
+                      className="btn-green"
                     >
-                      Adopt Again
+                      Request for Adoption
                     </button>
-                  )}
-                </>
-              ) : (
-                ""
-              )}
-              {petDetails?.shelter?.id != userId ? (
-                <>
-                  <button
-                    onClick={() => {
-                      handleRequest(APIHost, userId, petDetails?.id);
-                    }}
-                    className="btn-green"
-                  >
-                    Request for Adoption
-                  </button>
-                </>
-              ) : (
-                ""
-              )}
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

@@ -40,7 +40,7 @@ const Profile = () => {
     fetch(`${APIHost}/pet/all/?shelter_id=${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setShelterPets(data);
+        setShelterPets(data.reverse());
         setShelterPetsLoading(false);
       });
   }, [APIHost, user, userId, id]);

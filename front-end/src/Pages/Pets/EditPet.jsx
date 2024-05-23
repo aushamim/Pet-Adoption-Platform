@@ -21,30 +21,70 @@ const handleSubmit = (e, APIHost, navigate, userId, petId, loadPets) => {
   formData.append("breed", breed);
   formData.append("age", age);
   formData.append("description", description);
-  if (image) {
-    formData.append("image", image);
-  }
 
   const promise = () => {
-    return fetch(`${APIHost}/pet/update/${petId}/`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          throw new Error(data.error);
-        } else {
-          loadPets();
-          return data;
+    if (image) {
+      const imgFormData = new FormData();
+      imgFormData.append("image", image);
+      return fetch(
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMGBB_API_KEY
+        }`,
+        {
+          method: "POST",
+          body: imgFormData,
         }
+      )
+        .then((imgRes) => imgRes.json())
+        .then((imgData) => {
+          formData.append(
+            "image",
+            imgData?.data ? imgData?.data?.image?.url : ""
+          );
+
+          fetch(`${APIHost}/pet/update/${petId}/`, {
+            method: "PUT",
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+            body: formData,
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.error) {
+                throw new Error(data.error);
+              } else {
+                loadPets();
+                navigate(-1, { replace: true });
+                return data;
+              }
+            })
+            .catch((error) => {
+              throw error;
+            });
+        });
+    } else {
+      return fetch(`${APIHost}/pet/update/${petId}/`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+        body: formData,
       })
-      .catch((error) => {
-        throw error;
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            throw new Error(data.error);
+          } else {
+            loadPets();
+            navigate(-1, { replace: true });
+            return data;
+          }
+        })
+        .catch((error) => {
+          throw error;
+        });
+    }
   };
 
   toast.promise(promise, {
@@ -54,8 +94,6 @@ const handleSubmit = (e, APIHost, navigate, userId, petId, loadPets) => {
       return error;
     },
   });
-
-  navigate(-1, { replace: true });
 };
 
 const EditPet = () => {

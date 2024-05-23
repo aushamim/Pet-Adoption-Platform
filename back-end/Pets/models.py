@@ -17,7 +17,7 @@ class Pet(models.Model):
     adoption_status = models.CharField(
         max_length=10, choices=adoption_status, default="adopted"
     )
-    image = models.ImageField(upload_to="Pets/", blank=True, null=True)
+    image = models.URLField(blank=True, null=True)
 
     def __str__(self) -> str:
         if self.name:
