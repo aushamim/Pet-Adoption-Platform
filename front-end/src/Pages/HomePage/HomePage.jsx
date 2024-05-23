@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import Pets from "../../Components/Pets/Pets";
 import PetsSlider from "../../Components/Pets/PetsSlider";
+import Loader from "../../Components/Loader/Loader";
+import useGlobalState from "../../Hooks/useGlobalState";
 
 const HomePage = () => {
+  const { petsLoading } = useGlobalState();
+
   return (
     <div className="mt-5 xl:mt-10">
       <div
@@ -35,12 +39,18 @@ const HomePage = () => {
         </div>
       </div>
       <div>
-        <div className="block xl:hidden">
-          <PetsSlider />
-        </div>
-        <div className="hidden xl:block">
-          <Pets />
-        </div>
+        {petsLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div className="block xl:hidden">
+              <PetsSlider />
+            </div>
+            <div className="hidden xl:block">
+              <Pets />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

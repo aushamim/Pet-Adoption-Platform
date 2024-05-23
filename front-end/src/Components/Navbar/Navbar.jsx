@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="grid grid-cols-2 p-5 my-5 bg-white shadow-sm rounded-lg bg-opacity-80">
       <div className="text-3xl font-bold flex items-center">
         <Link to="/">
-          <span className="text-purple-500">Happy</span>Pals
+          <span className="text-purple-500">Happy</span>Tails
         </Link>
       </div>
 
