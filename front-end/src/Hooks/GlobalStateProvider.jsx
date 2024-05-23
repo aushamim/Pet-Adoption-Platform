@@ -68,7 +68,7 @@ const GlobalStateProvider = ({ children }) => {
   };
 
   const loadPets = () => {
-    setPetsLoading(false);
+    setPetsLoading(true);
     fetch(`${APIHost}/pet/all/`)
       .then((res) => res.json())
       .then((data) => {
