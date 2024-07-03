@@ -87,3 +87,6 @@
   -
   - Delete a Record
   - API Route (DELETE request): `/adoption/delete/<adoption_id>/` [↗️](https://pet-adoption-platform.onrender.com/adoption/delete/2/)
+
+> DB Backup: `python -Xutf8 ./manage.py dumpdata > db_backup.json`  
+> DB Restore: `py manage.py migrate` `python manage.py loaddata db_backup.json`
